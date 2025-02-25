@@ -1,0 +1,62 @@
+
+<h1>  
+    Welcome to {{title}}!  
+  </h1>  
+
+  
+  <hr />
+
+  <!-- <form (submit)="onSearch()"> -->
+    <div class="card" style="width: 50rem;">
+        <div class="card-header">
+            Search Filter
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Warehouse</label>
+            <div class="col-sm-10">
+                <ng-select [items]="warehouse" bindLabel="location" bindValue="warehouseId" 
+                    [(ngModel)]="selectedWarehouseId" > </ng-select>      
+                     <!-- [dropdownPosition]="'top'" -->
+                <br />Selected Warehouse ID: {{ selectedWarehouseId }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Product</label>
+            <div class="col-sm-10">
+                <ng-select [items]="products" bindLabel="name" bindValue="productId" 
+                    [(ngModel)]="selectedProductId"> </ng-select>  
+                <br />Selected Product ID: {{ selectedProductId }}
+            </div>
+        </div>
+        <!-- <div class="mb-3">
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </div> -->
+        <div class="mb-3">
+            <a (click)="onSearch()" class="btn btn-primary" >Search</a>   
+            <a (click)="ResetDropdownLists()" class="btn btn-secondary " >Reset</a>
+         </div>
+    </div>     
+    <!-- </form> -->
+  
+    <hr />
+ 
+
+  <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Warehouse</th>
+            <th>Product Name</th>
+            <th>quantity</th>            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let inv of (this.inventories); let i = index">
+            <td>{{i+1}}</td>
+            <td>{{ inv.warehouseLocation }}</td>
+            <td>{{ inv.productName }}</td>
+            <td>{{ inv.quantity }}</td>  
+            
+        </tr>
+    </tbody>
+</table>

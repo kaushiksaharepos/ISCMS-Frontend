@@ -1,0 +1,58 @@
+<h3>  
+     {{title}}!  
+  </h3>  
+ 
+  <hr />
+
+<form (submit)="onSave()">
+    <!-- <div class="row mb-3">
+      <label for="productId" class="col-sm-2 col-form-label">Product Id</label>
+      <div class="col-sm-10">
+        <input class="form-control" name="productId" [ngModel]="product.productId" readonly >
+      </div>
+    </div> -->
+    <div class="row mb-3">
+      <label for="warehouse" class="col-sm-2 col-form-label">Warehouse</label>
+      <div class="col-sm-10">
+        <ng-select class="form-control" [items]="warehouse" name="toWarehouse" bindLabel="location" bindValue="warehouseId" 
+              [(ngModel)]="selectedWarehouseId" [readonly]="editMode" > </ng-select>
+          <!-- <br />Selected Warehouse ID: {{ selectedWarehouseId }} -->
+      </div>
+    </div>
+    <!-- <div class="row mb-3">
+      <label for="name" class="col-sm-2 col-form-label">Product Name</label>
+      <div class="col-sm-10">
+        <input class="form-control" name="name" [(ngModel)]="product.name" >
+      </div>
+    </div> -->
+    <div class="row mb-3">
+      <label for="products" class="col-sm-2 col-form-label">Product</label>
+      <div class="col-sm-10">
+          <ng-select class="form-control" [items]="products" name="Products" 
+              bindLabel="name" bindValue="productId" [readonly]="editMode"
+              [(ngModel)]="productId" (change)="GetProductPrice()" > </ng-select>  
+          <!-- <br />Selected Product ID: {{ productId }} -->
+      </div>
+    </div>
+    <div class="row mb-3">
+        <label for="price" class="col-sm-2 col-form-label">Product Price</label>
+        <div class="col-sm-10">
+            <input class="form-control" name="price" [(ngModel)]="product.price" [readonly]="editMode" >
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="quantity" class="col-sm-2 col-form-label">Product Quantity </label>
+        <div class="col-sm-10">
+            <input class="form-control" name="quantity" [(ngModel)]="inventory.quantity" >
+        </div>
+    </div>
+          
+    <div class="mb-3">
+        <input type="submit" value="Save Stock" class="btn btn-primary" />
+        <a (click)="Reset()" class="btn btn-secondary " >Reset</a>
+    </div>
+    
+    <div class="card-footer">
+        <a routerLink="/products" class="">Back to Products</a>
+    </div>
+  </form>

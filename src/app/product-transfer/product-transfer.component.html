@@ -1,0 +1,53 @@
+<p>product-transfer works!</p>
+
+<form (submit)="TransferProduct()">
+    <div class="row mb-3">
+      <label for="fromWarehouse" class="col-sm-2 col-form-label">From Warehouse</label>
+      <div class="col-sm-10">
+        <ng-select class="form-control" [items]="fromWarehouse" 
+            name="fromWarehouse" (change)="OnChangeGetProducts()"
+            bindLabel="location" bindValue="warehouseId" 
+              [(ngModel)]="selectedFromWarehouseId" > </ng-select>      
+                <!-- [dropdownPosition]="'top'" -->
+          <br />Selected Warehouse ID: {{ selectedFromWarehouseId }}
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="toWarehouse" class="col-sm-2 col-form-label">To Warehouse</label>
+      <div class="col-sm-10">
+        <ng-select class="form-control" [items]="toWarehouse" name="toWarehouse" bindLabel="location" bindValue="warehouseId" 
+              [(ngModel)]="selectedToWarehouseId" > </ng-select>
+          <br />Selected Warehouse ID: {{ selectedToWarehouseId }}
+      </div>
+    </div>
+    <div class="row mb-3">
+        <label for="products" class="col-sm-2 col-form-label">Product</label>
+        <div class="col-sm-10">
+          <ng-select class="form-control" [items]="inventories" name="Products" 
+              bindLabel="productName" bindValue="productId" 
+              [(ngModel)]="selectedProductId" (change)="GetProductQty()" > </ng-select>  
+          <br />Selected Product ID: {{ selectedProductId }}
+        </div>
+    </div>
+    <div class="row mb-3">
+      <label for="selectedProductQty" class="col-sm-2 col-form-label">Product quantity</label>
+      <div class="col-sm-10">
+          <input class="form-control" name="selectedProductQty" [(ngModel)]="this.selectedProductQty" readonly [readonly]="true" >
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="TransferProductQty" class="col-sm-2 col-form-label">Transfer quantity </label>
+      <div class="col-sm-10">
+          <input class="form-control" name="TransferProductQty" [(ngModel)]="this.TransferProductQty" >
+      </div>
+    </div>
+
+        
+    <div class="mb-3">
+        <input type="submit" value="Transfer Product" class="btn btn-primary" />
+    </div>
+    
+    <!-- <div class="card-footer">
+        <a routerLink="/inventory-list" class="">Back to Product List</a>
+    </div> -->
+  </form>

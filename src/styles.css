@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@import "@ng-select/ng-select/themes/default.theme.css";
+/* @import 'assets/themes/custom-theme.scss'; */
+
+:root {
+	--primary-color: #6200ea;
+	--secondary-color: #03dac6;
+	--background-color: #f5f5f5;
+  }
+  
+  body {
+	background-color: var(--background-color);
+	color: var(--primary-color);
+  }
+
+.card {
+	position: relative;
+	display: -webkit-box;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 0.25rem;
+}
+
+.card-body {
+	flex: 1 1 auto;
+	padding: 1.25rem;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

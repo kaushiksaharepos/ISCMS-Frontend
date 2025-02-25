@@ -1,0 +1,61 @@
+<h3>Stock Details</h3>
+
+    <div class="card" style="width: 50rem;">
+        <div class="card-header">
+            Search Filter
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Warehouse</label>
+            <div class="col-sm-10">
+                <ng-select [items]="warehouse" bindLabel="location" bindValue="warehouseId" 
+                    [(ngModel)]="selectedWarehouseId" > </ng-select>      
+                <!-- <br />Selected Warehouse ID: {{ selectedWarehouseId }} -->
+            </div>
+        </div>
+        <!-- <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Product</label>
+            <div class="col-sm-10">
+                <ng-select [items]="products" bindLabel="name" bindValue="productId" 
+                    [(ngModel)]="selectedProductId"> </ng-select>  
+                <br />Selected Product ID: {{ selectedProductId }}
+            </div>
+        </div> -->
+        <div class="d-flex gap-2 justify-content-center py-3">
+            <a (click)="onSearch()" class="btn btn-primary" >Search</a>   
+            <a (click)="ResetDropdownLists()" class="btn btn-secondary " >Reset</a>
+            <a routerLink="/add-product" class="btn btn-secondary">Add Stock</a>
+         </div>         
+    </div>     
+  
+    <hr />
+ 
+<br /><br />
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Warehouse</th>
+            <th (click)="sortByNameAsc()" [ngClass]="getSortIcon('name')" >  Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prd of inventories; let i = index ">
+            <!-- <td>{{ prd.productId }}</td> -->
+            <td>{{i+1}}</td>
+            <td>{{ prd.warehouse?.location }}</td>
+            <td>{{ prd.product?.name }}</td>
+            <td>{{ prd.product?.price }}</td>
+            <td>{{ prd.quantity }}</td>
+            <td>
+                <!-- Edit text {{ prd.warehouseId }} -->
+                <!-- <a class="btn btn-secondary me-2" [routerLink]="['/view-product', prd.id]">View</a> -->
+                <a class="btn btn-primary me-2" [routerLink]="['/edit-product', prd.productId, prd.warehouseId]">Edit Stock</a>
+                <!-- <a class="btn btn-danger me-2" [routerLink]="['/delete-product', prd.id]">Delete</a> -->
+            </td>
+        </tr>
+    </tbody>
+</table>

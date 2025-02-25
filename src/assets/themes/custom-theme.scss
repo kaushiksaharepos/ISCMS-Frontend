@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+
+// Define a custom palette
+$custom-primary: mat-palette($mat-indigo);
+$custom-accent: mat-palette($mat-pink, A200, A100, A400);
+$custom-warn: mat-palette($mat-red);
+
+// Define a custom theme
+$custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
+
+// Apply the theme
+@include angular-material-theme($custom-theme);

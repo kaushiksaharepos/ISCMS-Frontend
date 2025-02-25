@@ -1,0 +1,62 @@
+<h1>
+    {{title}}
+</h1>
+<hr/>
+<!-- <mat-form-field></mat-form-field> -->
+<div class="card" style="width: 50rem;">
+    <div class="card-header">
+        Search Filter
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">From Date</label>
+        <div class="col-sm-10">
+            <input matInput [matDatepicker]="picker" [(ngModel)]="selectedFromDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>        
+            <!-- <br />Selected From Date: {{ selectedFromDate }} -->
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">To Date</label>
+        <div class="col-sm-10">
+            <input matInput [matDatepicker]="picker1" [(ngModel)]="selectedToDate">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            <!-- <br />Selected To Date: {{ selectedToDate }} -->
+        </div>
+    </div>
+    <div class="mb-3">
+        <a (click)="onSearch()" class="btn btn-primary" >Search</a>   
+        <a (click)="ResetAllField()" class="btn btn-secondary " >Reset</a>
+     </div>
+</div>
+<hr />
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            
+            <th>Product Name</th>
+            <th>From Warehouse</th>
+            <th>To Warehouse</th> 
+            <th>quantity</th>  
+            <th>Transfer Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let inv of (this.transferList); let i = index">
+            <td>{{i+1}}</td>
+            
+            <td>{{ inv.productName }}</td>
+            <td>{{ inv.fromWarehouseLocation }}</td>
+            <td>{{ inv.toWarehouseLocation }}</td>
+            <td>{{ inv.quantity }}</td>
+            <td>{{ inv.transferDate }}</td>
+            
+        </tr>
+    </tbody>
+</table>
+<div>
+    <button (click)="exportToExcel()">Export to Excel</button>
+</div>
